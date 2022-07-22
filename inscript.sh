@@ -97,15 +97,15 @@ function Apps {
     fi;
 }
 
+Yay
+
 Wifi   
 
 Awesomewm
 
-Yay
-
 Apps
 
-yay -Syu ${down_arr[@]}                
+yay -S ${down_arr[@]}                
                        
 # modprobe
 sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma;
