@@ -10,7 +10,7 @@ echo " "
 down_arr=() #In this array will be put thing to download
 
 function Wifi {
-    echo -n "Do you want wifi and other drivers set up on your system? (yn):  ";
+    echo -n "Do you want wifi and other drivers set up on your system? [yn]: ";
     read;
     if [ ${REPLY} = "y" ]; then
 	    echo "Neccecery wifi progrrams will be added"
@@ -26,9 +26,6 @@ function Wifi {
     	    down_arr[${#down_arr[@]}]='linux-headers'
             down_arr[${#down_arr[@]}]='wpa_supplicant'
 
-            # modprobe
-            sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma;
-            sudo modprobe wl;
     else 
 	    echo "Wifi set up cancelled"
     fi;
@@ -58,18 +55,6 @@ function Awesomewm {
 
 }	    
 
-function Apps {
-    echo -n "Do you want to install your apps? [yn]:  ";
-    read;
-    if [ ${REPLY} = "y" ]; then
-	    echo "Necceccery proggrams will be installed"
-            down_arr[${#down_arr[@]}]="awesome"
-            down_arr[${#down_arr[@]}]="brightnessctl"
-            down_arr[${#down_arr[@]}]="light"
-            down_arr[${#down_arr[@]}]="acpi"
-            down_arr[${#down_arr[@]}]="lxappearance"
-    fi;
-}
 
 function Yay {
     echo -n "Installing yay is neccecery to continue [yn]:  ";
@@ -114,29 +99,14 @@ function Apps {
 
 Wifi   
 
-echo " "
-echo " "
-
 Awesomewm
-
-echo " "
-echo " "
-
-Apps 
-
-echo " "
-echo " "
 
 Yay
 
-echo " "
-echo " "
-
 Apps
 
-echo " "
-echo " "
-
-
-yay -S ${down_arr[@]}                
+yay -Syu ${down_arr[@]}                
                        
+# modprobe
+sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma;
+sudo modprobe wl;
