@@ -8,6 +8,7 @@ echo "Script currently works on arch linux only!"
 echo " "
 
 down_arr=() #In this array will be put thing to download
+down_arr_yay=()
 
 function Wifi {
     echo -n "Do you want wifi and other drivers set up on your system? [y/n]: ";
@@ -76,14 +77,14 @@ function Apps {
     read;
     if [ ${REPLY} = "y" ]; then
 	    echo "Necceccery proggrams will be installed"
-            down_arr[${#down_arr[@]}]="librewolf-bin"
+            down_arr_yay[${#down_arr[@]}]="librewolf-bin"
             down_arr[${#down_arr[@]}]="vim"
             down_arr[${#down_arr[@]}]="vlc"
             down_arr[${#down_arr[@]}]="unzip"
             down_arr[${#down_arr[@]}]="unrar"
-            down_arr[${#down_arr[@]}]="tutanota-desktop-bin"
+            down_arr_yay[${#down_arr[@]}]="tutanota-desktop-bin"
             down_arr[${#down_arr[@]}]="qbittorrent"
-            down_arr[${#down_arr[@]}]="vscodium-bin"
+            down_arr_yay[${#down_arr[@]}]="vscodium-bin"
             down_arr[${#down_arr[@]}]="neofetch"
             down_arr[${#down_arr[@]}]="nemo"
             down_arr[${#down_arr[@]}]="kitty"
@@ -91,20 +92,34 @@ function Apps {
             down_arr[${#down_arr[@]}]="xreader"
             down_arr[${#down_arr[@]}]="pqiv"
             down_arr[${#down_arr[@]}]="gparted"
-            down_arr[${#down_arr[@]}]="balena-etcher"
+            down_arr_yay[${#down_arr[@]}]="balena-etcher"
             down_arr[${#down_arr[@]}]="alsa-utils"
     fi;
 }
 
 Yay
 
+sleep 2
+
 Wifi   
+
+sleep 2
 
 Awesomewm
 
+sleep 2
+
 Apps
 
-yay -S ${down_arr[@]}                
+sleep 2
+
+sudo pacman -S ${down_arr[@]}     
+
+sleep 2
+
+yay -S ${down_arr_yay[@]} 
+
+sleep 2
                        
 # modprobe
 sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma;
