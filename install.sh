@@ -94,6 +94,8 @@ function Apps {
             down_arr[${#down_arr[@]}]="gparted"
             down_arr_yay[${#down_arr[@]}]="balena-etcher-bin"
             down_arr[${#down_arr[@]}]="alsa-utils"
+            down_arr[${#down_arr[@]}]="htop"
+            down_arr[${#down_arr[@]}]="sddm"
     fi;
 }
 
@@ -130,7 +132,6 @@ function Themes {
             down_arr_yay[${#down_arr_yay[@]}]="archlinux-themes-sddm"
             down_arr[${#down_arr[@]}]="deepin-gtk-theme"
             down_arr_yay[${#down_arr_yay[@]}]="multicolor-sddm-theme"
-            down_arr[${#down_arr[@]}]="gnu-free-fonts"
             down_arr_yay[${#down_arr_yay[@]}]="nordic-polar-theme"
             down_arr[${#down_arr[@]}]="oxygen-icons"
             down_arr[${#down_arr[@]}]="pop-gtk-theme"
@@ -146,7 +147,21 @@ function Themes {
             down_arr_yay[${#down_arr_yay[@]}]="adwaita-dark"
             down_arr_yay[${#down_arr_yay[@]}]="nordic-theme"
             down_arr_yay[${#down_arr_yay[@]}]="tela-icon-theme-bin"
-            down_arr_yay[${#down_arr_yay[@]}]="ultra-flat-icons-blue"
+
+            sleep 1
+
+            tar zxvf dots.tar.gz
+
+            sleep 0.5
+
+            cd dots
+            mv .icons ~/
+            mv .themes ~/
+
+            sleep 0.5
+
+            tar zxvf sddmthemes.tar.gz
+            sudo mv sddmthemes /usr/share/sddm/
 
     fi;
 }
@@ -159,7 +174,7 @@ sleep 1
 
 echo " "
 
-Themes
+Fonts
 
 sleep 1
 
@@ -183,7 +198,7 @@ sleep 1
 
 echo " "
 
-Fonts
+Themes
 
 sleep 1
 
