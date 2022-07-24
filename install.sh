@@ -75,14 +75,14 @@ function Apps {
     read;
     if [ ${REPLY} = "y" ]; then
 	    echo "Necceccery programs will be installed"
-            down_arr_yay[${#down_arr[@]}]="librewolf-bin"
+            down_arr_yay[${#down_arr_yay[@]}]="librewolf-bin"
             down_arr[${#down_arr[@]}]="vim"
             down_arr[${#down_arr[@]}]="vlc"
             down_arr[${#down_arr[@]}]="unzip"
             down_arr[${#down_arr[@]}]="unrar"
-            down_arr_yay[${#down_arr[@]}]="tutanota-desktop-bin"
+            down_arr_yay[${#down_arr_yay[@]}]="tutanota-desktop-bin"
             down_arr[${#down_arr[@]}]="qbittorrent"
-            down_arr_yay[${#down_arr[@]}]="vscodium-bin"
+            down_arr_yay[${#down_arr_yay[@]}]="vscodium-bin"
             down_arr[${#down_arr[@]}]="neofetch"
             down_arr[${#down_arr[@]}]="nemo"
             down_arr[${#down_arr[@]}]="kitty"
@@ -90,7 +90,7 @@ function Apps {
             down_arr[${#down_arr[@]}]="xreader"
             down_arr[${#down_arr[@]}]="pqiv"
             down_arr[${#down_arr[@]}]="gparted"
-            down_arr_yay[${#down_arr[@]}]="balena-etcher-bin"
+            down_arr_yay[${#down_arr_yay[@]}]="etcher-bin"
             down_arr[${#down_arr[@]}]="alsa-utils"
             down_arr[${#down_arr[@]}]="htop"
             down_arr[${#down_arr[@]}]="sddm"
@@ -116,8 +116,8 @@ function Fonts {
             down_arr[${#down_arr[@]}]="xorg-fonts-alias-100dpi"
             down_arr[${#down_arr[@]}]="xorg-fonts-alias-75dpi"
             down_arr[${#down_arr[@]}]="ttf-linux-libertine"
-            down_arr_yay[${#down_arr[@]}]="nerd-fonts-droid-sans-mono"
-            down_arr_yay[${#down_arr_yay[@]}]="tfonts-droid-fallback"
+            down_arr_yay[${#down_arr_yay[@]}]="nerd-fonts-droid-sans-mono"
+            down_arr_yay[${#down_arr_yay[@]}]="fonts-droid-fallback"
             down_arr_yay[${#down_arr_yay[@]}]="ttf-borg-sans-mono"
     
     else
@@ -141,7 +141,7 @@ function Themes {
             down_arr[${#down_arr[@]}]="oxygen-icons"
             down_arr[${#down_arr[@]}]="pop-gtk-theme"
             down_arr[${#down_arr[@]}]="pop-gtk-theme"
-            down_arr_yay[${#down_arr[@]}]="sddm-theme-astronaut"
+            down_arr_yay[${#down_arr_yay[@]}]="sddm-theme-astronaut"
             down_arr_yay[${#down_arr_yay[@]}]="xcursor-oxygen"
             down_arr_yay[${#down_arr_yay[@]}]="qogir-icon-theme"
             down_arr_yay[${#down_arr_yay[@]}]="qogir-gtk-theme"
@@ -159,14 +159,13 @@ function Themes {
 
             sleep 0.5
 
-            cd dots
-            mv .icons ~/
-            mv .themes ~/
+            mv dots/.icons ~/
+            mv dots/.themes ~/
 
             sleep 0.5
 
-            tar zxvf sddmthemes.tar.gz
-            sudo mv sddmthemes /usr/share/sddm/
+            sudo mv sddmthemes.tar.gz /usr/share/sddm/themes/
+	    sudo tar zxvf /usr/share/sddm/themes/sddmthemes.tar.gz
     
     else
 	    echo "Themes/icons install cancelled!"
