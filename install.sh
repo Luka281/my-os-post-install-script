@@ -16,17 +16,13 @@ function Wifi {
     read;
     if [ ${REPLY} = "y" ]; then
 	    echo "Neccecery programs will be installed!"
-    	    down_arr[${#down_arr[@]}]='wireless_tools'
-    	    down_arr[${#down_arr[@]}]='network-manager-applet'
-            down_arr[${#down_arr[@]}]='broadcom-wl-dkms'
-    	    down_arr[${#down_arr[@]}]='linux-headers'
-            down_arr[${#down_arr[@]}]='wpa_supplicant'
 
-            down_arr[${#down_arr[@]}]='xf86-video-intel'
-    	    down_arr[${#down_arr[@]}]='intel-ucode'
-            down_arr[${#down_arr[@]}]='broadcom-wl-dkms'
-    	    down_arr[${#down_arr[@]}]='linux-headers'
-            down_arr[${#down_arr[@]}]='wpa_supplicant'
+	    sudo pacman -S wireless_tools network-manager-applet broadcom-wl-dkms linux-headers wpa_supplicant xf86-video-intel intel-ucode networkmanager
+    	    
+	    sleep 0.5
+
+	    sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
+	    sudo modprobe wl 
 
     else 
 	    echo "Wifi set up cancelled!"
@@ -38,12 +34,14 @@ function Awesomewm {
     read;
     if [ ${REPLY} = "y" ]; then
 	    echo "Neccecery programs will be added"
+
             down_arr[${#down_arr[@]}]="awesome"
             down_arr[${#down_arr[@]}]="brightnessctl"
             down_arr[${#down_arr[@]}]="light"
             down_arr[${#down_arr[@]}]="acpi"
             down_arr[${#down_arr[@]}]="lxappearance"
             down_arr[${#down_arr[@]}]="shotgun"
+
 	    #configs
 	    git clone https://github.com/Luka281/awesome.git;
 	    mv awesome ~/.config/
@@ -96,6 +94,9 @@ function Apps {
             down_arr[${#down_arr[@]}]="alsa-utils"
             down_arr[${#down_arr[@]}]="htop"
             down_arr[${#down_arr[@]}]="sddm"
+    else
+	    echo "Apps download cancelled!"
+    
     fi;
 }
 
@@ -118,6 +119,10 @@ function Fonts {
             down_arr_yay[${#down_arr[@]}]="nerd-fonts-droid-sans-mono"
             down_arr_yay[${#down_arr_yay[@]}]="tfonts-droid-fallback"
             down_arr_yay[${#down_arr_yay[@]}]="ttf-borg-sans-mono"
+    
+    else
+	    echo "Font install cancelled!"
+
 
     fi;
 }
@@ -148,7 +153,7 @@ function Themes {
             down_arr_yay[${#down_arr_yay[@]}]="nordic-theme"
             down_arr_yay[${#down_arr_yay[@]}]="tela-icon-theme-bin"
 
-            sleep 1
+            sleep 0.5
 
             tar zxvf dots.tar.gz
 
@@ -162,59 +167,58 @@ function Themes {
 
             tar zxvf sddmthemes.tar.gz
             sudo mv sddmthemes /usr/share/sddm/
+    
+    else
+	    echo "Themes/icons install cancelled!"
 
     fi;
 }
 
-sleep 1
+sleep 0.5
 
 Yay
 
-sleep 1
+sleep 0.5
 
 echo " "
 
 Fonts
 
-sleep 1
+sleep 0.5
 
 echo " "
 
 Wifi   
 
-sleep 1
+sleep 0.5
 
 echo " "
 
 Awesomewm
 
-sleep 1
+sleep 0.5
 
 echo " "
 
 Apps
 
-sleep 1
+sleep 0.5
 
 echo " "
 
 Themes
 
-sleep 1
+sleep 0.5
 
 echo " "
 
 sudo pacman -S ${down_arr[@]}     
 
-sleep 1
+sleep 0.5
 
 echo " "
 
 yay -S ${down_arr_yay[@]} 
 
-sleep 1
+sleep 0.5
 
-           
-# modprobe
-sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma;
-sudo modprobe wl;
