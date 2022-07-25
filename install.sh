@@ -8,6 +8,8 @@ echo "Script works on arch linux only!"
 
 echo " "
 
+adf=$(pwd)
+
 down_arr=() # array for pacman installs
 down_arr_yay=() # array for aur installs
 
@@ -49,6 +51,7 @@ function Awesomewm {
 	    mv dmenu ~/.config/
 	    cd ~/.config/dmenu/
 	    sudo make install
+        cd $adf
     else
 	    echo "Awesomewm downdoad cancelled!"
     fi;
@@ -67,6 +70,7 @@ function Yay {
 	    git clone https://aur.archlinux.org/yay.git;
             cd yay;
             makepkg -si
+        $adf
     else
         echo "Yay download cancelled!"
     fi;
@@ -154,7 +158,7 @@ function Themes {
             down_arr_yay[${#down_arr_yay[@]}]="fluent-cursor-theme-git"
             down_arr_yay[${#down_arr_yay[@]}]="adwaita-dark"
             down_arr_yay[${#down_arr_yay[@]}]="nordic-theme"
-            down_arr_yay[${#down_arr_yay[@]}]="tela-icon-theme-bin"
+            down_arr_yay[${#down_arr_yay[@]}]="tela-icon-theme"
 
             sleep 0.5
 
@@ -168,7 +172,7 @@ function Themes {
             sleep 0.5
 
             sudo mv sddmthemes.tar.gz /usr/share/sddm/themes/
-	    sudo tar zxvf /usr/share/sddm/themes/sddmthemes.tar.gz
+	        sudo tar zxvf /usr/share/sddm/themes/sddmthemes.tar.gz
     
     else
 	    echo "Themes/icons install cancelled!"
@@ -219,7 +223,6 @@ if [ ${#down_arr[@]} != 0 ]; then
 fi;
 
 sleep 0.3
-
 
 if [ ${#down_arr_yay[@]} != 0 ]; then
 	yay -S ${down_arr_yay[@]}
