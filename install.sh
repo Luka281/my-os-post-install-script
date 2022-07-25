@@ -4,7 +4,7 @@
 # This script is written for my device and may not work for you
 
 echo "Hi! This is post installation script for Luka281."
-echo "Script currently works on arch linux only!"
+echo "Script works on arch linux only!"
 
 echo " "
 
@@ -61,7 +61,10 @@ function Yay {
     read;
     if [ ${REPLY} = "y" ]; then
 	    echo "Necceccery programs will be installed!"
-            git clone https://aur.archlinux.org/yay.git;
+           
+	    sudo pacman -S make
+	    sleep 0.2
+	    git clone https://aur.archlinux.org/yay.git;
             cd yay;
             makepkg -si
     else
@@ -173,51 +176,52 @@ function Themes {
     fi;
 }
 
-sleep 0.5
+sleep 0.3
 
 Yay
 
-sleep 0.5
+sleep 0.3
 
 echo " "
 
 Fonts
 
-sleep 0.5
+sleep 0.3
 
 echo " "
 
 Wifi   
 
-sleep 0.5
+sleep 0.3
 
 echo " "
 
 Awesomewm
 
-sleep 0.5
+sleep 0.3
 
 echo " "
 
 Apps
 
-sleep 0.5
+sleep 0.3
 
 echo " "
 
 Themes
 
-sleep 0.5
+sleep 0.3
 
 echo " "
 
-sudo pacman -S ${down_arr[@]}     
+if [ ${#down_arr[@]} != 0 ]; then
+	sudo pacman -S ${down_arr[@]}
+fi;
 
-sleep 0.5
+sleep 0.3
 
-echo " "
 
-yay -S ${down_arr_yay[@]} 
-
-sleep 0.5
+if [ ${#down_arr_yay[@]} != 0 ]; then
+	yay -S ${down_arr_yay[@]}
+fi;
 
