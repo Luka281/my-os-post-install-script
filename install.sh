@@ -162,8 +162,8 @@ function Themes {
 
             sleep 0.5
 
-            tar zxvf dots.tar.gz
-
+            #tar zxvf dots.tar.gz
+            unzip dots.zip
             sleep 0.5
 
             mv dots/.icons ~/
